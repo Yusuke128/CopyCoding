@@ -1,0 +1,49 @@
+/* ページ全体の基本スタイル */
+body {
+  padding: 20px;
+  /*画面の端との余白 */
+  font-family: sans-serif;
+  /* すっきりした見やすいサンセリフ体を使用 */
+  text-align: center;
+  /*中央揃えにする(主にタイトルやボタンなどに影響) */
+}
+
+/* ツイート入力欄のスタイル */
+input {
+  width: 60%;
+  /* 幅は画面の60% */
+  padding: 8px;
+  /* 内側の余白(上下左右) */
+  font-size: 16px;
+  /* テキストのサイズを16pxに設定 */
+}
+
+/* ボタン共通スタイル(ツイート・削除ボタン) */
+button {
+  margin-left: 8px;
+  /*左側に8pxの余白(ボタン同士の間隔用) */
+  padding: 8px 12px;
+  /* 上下8px, 左右12pxの余白 */
+  border: none;
+  /* ボーター(枠線)を無効化 */
+  background-color: #1da1f2;
+  /* Twitterブルーの背景色 */
+  color: white;
+  /* 文字色は白 */
+  font-size: 16px;
+  /* 文字の大きさ　*/
+}
+
+/* 各ツイート(投稿)のスタイル */
+.tweet {
+  width: 60%;
+  /*横幅は全体の60% */
+  margin: 10px auto;
+  /*上下に10pxの間隔,左右は自動(中央寄せ) */
+  padding: 10px;
+  /*内側に余白をつけて読みやすく */
+  border: 1px solid #cccccc;
+  /*薄いグレーの枠線で囲う */
+  text-align: left;
+  /* ツイートのテキストは左寄せにする */
+}
