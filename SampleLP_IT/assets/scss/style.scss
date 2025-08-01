@@ -334,3 +334,24 @@ h1 {
     }
   }
 }
+.sub_content {
+  max-width: $wrap-width;
+  margin-top: 8rem;
+  text-align: center;
+  .content_ttl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 3.5rem;
+    font-size: 1.8rem;
+
+    justify-items: center;
+    .border {
+      width: 100px;
+      height: 3px;
+      margin: 0 1.5em;
+      background-color: $font-color;
+    }
+  }
+}
