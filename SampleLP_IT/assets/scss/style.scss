@@ -12,6 +12,7 @@
 // 共通カラー設定@scss
 $primary-color: #ff8800;
 $secondary-color: #ffbb00;
+$primary-color-opacity: #faf2de;
 $font-color: #000000;
 $background-color: #f8f8f8;
 $wrap-width: 1140px;
@@ -62,10 +63,11 @@ a {
 }
 /* コンテンツ部分の共有設定 */
 article:not(.mv) {
-  margin-top: 5dvh;
+  margin-top: 5rem;
+  padding-bottom: 3rem;
 }
 .ttl_box {
-  padding-top: 5.75rem;
+  padding: 5.75rem 0;
   text-align: center;
   .contents_ttl {
     display: inline-block;
@@ -290,12 +292,11 @@ h1 {
     max-width: $wrap-width;
     margin-top: 5.75em;
     &::after {
-      opacity: 0.1;
       position: absolute;
       left: 0;
       width: 700px;
       height: 350px;
-      background-color: $primary-color;
+      background-color: $primary-color-opacity;
       content: "";
     }
     &:nth-child(even) {
@@ -306,11 +307,12 @@ h1 {
       }
     }
     .content_img {
-      width: 49%;
-      height: auto;
+      width: auto;
+      height: 800px;
     }
     .content_box {
       position: relative;
+      z-index: 1;
       width: 49%;
       text-align: left;
       .content_ttl {
@@ -335,7 +337,6 @@ h1 {
   }
 }
 .sub_content {
-  max-width: $wrap-width;
   margin-top: 8rem;
   text-align: center;
   .content_ttl {
@@ -352,6 +353,56 @@ h1 {
       height: 3px;
       margin: 0 1.5em;
       background-color: $font-color;
+    }
+  }
+  p {
+    margin-bottom: 2rem;
+  }
+  .process_list {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    max-width: $wrap-width;
+    margin-bottom: 11rem;
+    &::after {
+      opacity: 0.8;
+      clip-path: polygon(0 0, 99% 0, 100% 50%, 99% 100%, 0 100%, 0% 50%);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: -1;
+      transform: translateY(-75%);
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to right, transparent, $secondary-color);
+      content: "";
+    }
+  }
+  .table_box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: $wrap-width;
+
+    gap: 40px;
+    .guide_table {
+      flex-grow: 1;
+      width: 550px;
+      background-color: $primary-color-opacity;
+      border-collapse: collapse;
+      caption {
+        margin: 1.5rem auto;
+      }
+      thead {
+        background-color: $secondary-color;
+      }
+      th,
+      td {
+        padding: 1em 0;
+        border-width: 1px;
+        border-style: solid;
+        border-color: $primary-color;
+      }
     }
   }
 }
