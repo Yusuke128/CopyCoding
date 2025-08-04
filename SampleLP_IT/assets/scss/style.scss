@@ -16,6 +16,11 @@ $primary-color-opacity: #faf2de;
 $font-color: #000000;
 $background-color: #f8f8f8;
 $wrap-width: 1140px;
+$breakpoints: (
+  sp: "screen and (max-width: 767px)",
+  tab: "screen and (min-width : 768px) and (max-width: 1023px)",
+  pc: "screen and (min-width: 1024px)"
+);
 
 :root {
   /*scssの変数をcss変数に変換 (cssアップロードのみで変換可能) */
@@ -184,6 +189,7 @@ footer {
     position: absolute;
     bottom: 10em;
     left: 15em;
+    z-index: 2;
     color: #ffffff;
     font-size: 20px;
     text-shadow: var(--drop-shadow);
@@ -208,6 +214,7 @@ footer {
     position: absolute;
     right: 10em;
     bottom: 0;
+    z-index: 1;
     width: 700px;
     min-width: 700px;
   }
