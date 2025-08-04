@@ -4,7 +4,7 @@
   <head>
     <title>IT機器系ランディングページ</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="withh=device-with, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 検索対応 -->
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -352,57 +352,66 @@
       </article><!-- #about.about end-->
 
       <article id="contact" class="contact">
-        <section class="ttl_box">
-          <h3 class="contents_ttl contact_ttl">お問い合せ</h3><!-- .contents_ttl service_ttl end-->
-          <p class="contents_subTtl">Contact</p><!-- .contenst_subTtl end-->
-        </section><!-- .ttl_box end-->
+        <div class="inner">
+          <section class="ttl_box">
+            <h3 class="contents_ttl contact_ttl">お問い合せ</h3><!-- .contents_ttl service_ttl end-->
+            <p class="contents_subTtl">Contact</p><!-- .contenst_subTtl end-->
+          </section><!-- .ttl_box end-->
 
-        <table class="contact_table">
-          <tbody>
-            <tr>
-              <th class="input_name" for="yourname">名前<span class="required">必須</span><!-- .required end--></th><!-- .input_name end-->
-              <td class="input_content"><input type="text" name="yourname" id="yourname"></td><!-- .input_content end-->
-            </tr>
-            <tr>
-              <th class="input_name" for="kana">カタカナ<span class="required">必須</span><!-- .required end--></th><!-- .input_name end-->
-              <td class="input_content"><input type="text" name="kana" id="kana"></td><!-- .input_content end-->
-            </tr>
-            <tr>
-              <th class="input_name" for="tel">電話番号<span class="required">必須</span><!-- .required end--></th><!-- .input_name end-->
-              <td class="input_content"><input type="tel" name="tel" id="tel"></td><!-- .input_content end-->
-            </tr>
-            <tr>
-              <th class="input_name" for="mail">メールアドレス<span class="required">必須</span><!-- .required end--></th><!-- .input_name end-->
-              <td class="input_content"><input type="email" name="mail" id="mail"></td><!-- .input_content end-->
-            </tr>
-            <tr>
-              <th class="input_name" for="content">お問い合わせの内容<span class="required">必須</span><!-- .required end--></th><!-- .input_name end-->
-              <td class="input_content">
-                <textarea id="content"></textarea><!-- #content end-->
-              </td><!-- .input_content end-->
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td><button type="submit" class="btn">入力内容を確認する</button></td><!-- .btn end-->
-            </tr>
-          </tfoot>
-        </table><!-- .contact_table end-->
-
+          <table class="contact_table">
+            <tbody>
+              <tr>
+                <th class="input_name">名前<!-- .required end--></th><!-- .input_name end-->
+                <td class="input_content">
+                  <input type="text" name="yourname" id="yourname" class="input_form">
+                </td><!-- .input_content end-->
+              </tr>
+              <tr>
+                <th class="input_name">カタカナ<!-- .required end--></th><!-- .input_name end-->
+                <td class="input_content">
+                  <input type="text" name="kana" id="kana" class="input_form">
+                </td><!-- .input_content end-->
+              </tr>
+              <tr>
+                <th class="input_name">電話番号<!-- .required end--></th><!-- .input_name end-->
+                <td class="input_content"><input type="tel" name="tel" id="tel" class="input_form"></td><!-- .input_content end-->
+              </tr>
+              <tr>
+                <th class="input_name">メールアドレス<!-- .required end--></th><!-- .input_name end-->
+                <td class="input_content"><input type="email" name="mail" id="mail" class="input_form"></td><!-- .input_content end-->
+              </tr>
+              <tr>
+                <th class="input_name">お問い合わせの内容<!-- .required end--></th><!-- .input_name end-->
+                <td class="input_content">
+                  <textarea id="content" class="input_form"></textarea><!-- #content end-->
+                </td><!-- .input_content end-->
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2"><button type="submit" class="btn">入力内容を確認する</button></td><!-- .btn end-->
+              </tr>
+            </tfoot>
+          </table><!-- .contact_table end-->
+        </div><!-- .inner end-->
       </article><!-- #contact.contact end-->
+      <!--     <div class="contact_bg">
+        <img src="assets/img/office-594132_1920.webp" alt="">
+      </div>.contact_bg end-->
+
     </main>
     <footer>
       <h2 class="footer_logo">優羽Lab.App</h2><!-- .footer_logo end-->
       <!-- <img src="" alt="" class="footer_logo"> -->
-      <nav class="footer_nav">
-        <ul class="footer_menu">
-          <li class="footer_item"><a href="#" class="footer_link">TOP</a><!-- .footer_link end--></li><!-- .footer_item end-->
-          <li class="footer_item"><a href="#solution" class="footer_link">Solutions</a><!-- .footer_link end--></li><!-- .footer_item end-->
-          <li class="footer_item"><a href="#service" class="footer_link">Service</a><!-- .footer_link end--></li><!-- .footer_item end-->
-          <li class="footer_item"><a href="#about" class="footer_link">About&nbsp;Us</a><!-- .footer_link end--></li><!-- .footer_item end-->
-          <li class="footer_item"><a href="/privacy" class="footer_link">プライバシーポリシー</a><!-- .footer_link end--></li><!-- .footer_item end-->
-        </ul><!-- .footer_menu end-->
-      </nav><!-- .footer_nav end-->
+
+      <ul class="footer_nav">
+        <li class="footer_item"><a href="#" class="footer_link">TOP</a><!-- .footer_link end--></li><!-- .footer_item end-->
+        <li class="footer_item"><a href="#solution" class="footer_link">Solutions</a><!-- .footer_link end--></li><!-- .footer_item end-->
+        <li class="footer_item"><a href="#service" class="footer_link">Service</a><!-- .footer_link end--></li><!-- .footer_item end-->
+        <li class="footer_item"><a href="#about" class="footer_link">About&nbsp;Us</a><!-- .footer_link end--></li><!-- .footer_item end-->
+        <li class="footer_item"><a href="/privacy" class="footer_link">プライバシーポリシー</a><!-- .footer_link end--></li><!-- .footer_item end-->
+      </ul><!-- .footer_menu end-->
+
       <p class="copy">CopyRight&copy;優羽Lab.&nbsp;All&nbsp;right&nbsp;reserved.</p><!-- .copy end-->
     </footer>
     <!-- js読み込み -->
