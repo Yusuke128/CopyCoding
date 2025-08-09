@@ -17,10 +17,57 @@ $font-color: #000000;
 $background-color: #f8f8f8;
 $wrap-width: 1140px;
 $breakpoints: (
-  sp: "screen and (max-width: 767px)",
-  tab: "screen and (min-width : 768px) and (max-width: 1023px)",
-  pc: "screen and (min-width: 1024px)"
+    sp: "screen and (max-width: 767px)",
+    tab: "screen and (min-width : 768px) and (max-width: 1024px)",
+    pc: "screen and (min-width: 1025px)"
 );
+@mixin media($breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+@mixin humberger-menu {
+    display: block;
+    align-items: center;
+    position: absolute;
+    z-index: 102;
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    cursor: pointer;
+    span {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        margin: 0;
+        background-color: $primary-color;
+        transition: .3s;
+
+        mix-blend-mode: difference;
+        &:first-child {
+            top: 5%;
+        }
+        &:nth-child(2) {
+            top: 50%;
+        }
+        &:last-child {
+            bottom: 0;
+        }
+    }
+    &.open span {
+        top: 50%;
+        &:first-child {
+            transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+            opacity: 0;
+        }
+        &:last-child {
+            transform: rotate(-45deg);
+        }
+    }
+}
 
 :root {
     /*scssの変数をcss変数に変換 (cssアップロードのみで変換可能) */
@@ -37,7 +84,7 @@ $breakpoints: (
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Noto Sans JP", sans-serif, "Material Icons";
 }
 /* 共通スタイル */
 /* リンク設定 */
@@ -98,6 +145,11 @@ article:not(.mv) {
 }
 /*  headerの設定 */
 header {
+    @include media(tab) {
+        display: block;
+        width: auto;
+        height: 90px;
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -113,31 +165,64 @@ header {
 
     backdrop-filter: blur(5px);
     .btn {
+        @include media(tab) {
+            width: auto;
+        }
         width: 200px;
         padding: 22px 54px;
     }
-}
-.header_nav {
-    margin-right: 0;
-    font-weight: bold;
-    .nav_menu {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+
+    .header_nav {
+        display: contents;
         margin-right: 0;
         font-weight: bold;
-        font-size: 20px;
-        letter-spacing: .5px;
+        .nav_menu {
+            @include media(tab) {
+                flex-direction: column;
+                transform: translateX(-100vw);
+                margin-top: 2rem;
 
-        gap: 4em;
+                gap: 2em;
+            }
+            @include media(sp) {
+                flex-direction: column;
+                transform: translateX(-100vw);
+                margin-top: 2rem;
+
+                gap: 2em;
+            }
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-right: 0;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: .5px;
+
+            gap: 4em;
+        }
+    }
+    h1 {
+        @include media(tab) {
+            font-size: 2rem;
+        }
+        margin-left: 90px;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 50px;
+    }
+
+    .humberger {
+        @include media(tab) {
+            @include humberger-menu;
+        }
+        @include media(sp) {
+            @include humberger-menu;
+        }
+        display: none;
     }
 }
-h1 {
-    margin-left: 90px;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 50px;
-}
+
 /* footer */
 
 footer {
@@ -168,6 +253,37 @@ footer {
 }
 /* MV設定 */
 .mv {
+    @include media(tab) {
+        position: relative;
+        height: 100dvh;
+        min-height: 100dvh;
+        &::after {
+            position: absolute;
+            bottom: 1em;
+            width: 2rem;
+            height: 2rem;
+            border: {
+                color: $background-color;
+
+                style: solid;
+                radius: 50%;
+            };
+            box-shadow: 0 0 0 0 $background-color;
+            color: $primary-color-opacity;
+            font-size: 1.5rem;
+            text-align: center;
+            content: "\ead0";
+            animation: ripple 3s infinite;
+            @keyframes ripple {
+                50% {
+                    box-shadow: 0 0 0 1em transparent;
+                }
+                100% {
+                    box-shadow: 0 0 0 1em transparent;
+                }
+            }
+        }
+    }
     display: grid;
     width: 100%;
     height: 1920px;
@@ -183,7 +299,7 @@ footer {
     grid-row-gap: 0;
     place-items: center;
     place-content: center;
-    .mv_title {
+    &_title {
         color: #ffffff;
         font-weight: 900;
         font-size: 4.5em;
@@ -192,7 +308,7 @@ footer {
 
         grid-area: 2 / 1 / 3 / 3;
     }
-    .mv_contentbox {
+    &_contentbox {
         z-index: 2;
         margin-right: 0;
         color: #ffffff;
@@ -217,14 +333,17 @@ footer {
             }
         }
     }
-    .mv_humanism {
+    &_humanism {
+        @include media(tab) {
+            grid-area: 6/2/4;
+        }
+        align-content: end;
         height: 100%;
         margin-left: 0;
 
         grid-area: 3/2/6;
         img {
-            width: auto;
-            height: 100%;
+            max-height: 100%;
         }
     }
 }
@@ -266,13 +385,13 @@ footer {
             height: 100px;
         }
     }
-    .solution_contents {
+    &_contents {
         position: relative;
         margin-top: 7.125em;
         .content {
             max-width: $wrap-width;
             margin-bottom: 6rem;
-            .content_ttl {
+            &_ttl {
                 margin-bottom: 3.125rem;
                 font-size: 2rem;
             }
@@ -326,7 +445,7 @@ footer {
 /* Service */
 .service {
     background-color: $background-color;
-    .service_content {
+    &_content {
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
@@ -335,7 +454,7 @@ footer {
         &::after {
             position: absolute;
             left: 0;
-            width: 700px;
+            width: 55%;
             height: 350px;
             background-color: $primary-color-opacity;
             content: "";
@@ -348,6 +467,7 @@ footer {
             }
         }
         .content_img {
+            z-index: 2;
             width: auto;
             height: 800px;
         }
